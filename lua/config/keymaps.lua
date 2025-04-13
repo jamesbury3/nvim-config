@@ -5,7 +5,7 @@
 local map = LazyVim.safe_keymap_set
 
 map("n", "<leader>jq", ":%!jq --indent 4 '.'<CR>", { desc = "format json with jq" })
-map('n', '<leader>cf', ':lua Format_file()<CR>', { noremap = true, silent = true })
+map('n', '<leader>cf', ':lua Format_file()<CR>', { desc = "format file with custom formatter", noremap = true, silent = true })
 
 -- Define the function
 function Format_file()
@@ -14,7 +14,7 @@ function Format_file()
     print("formatting yaml...")
     local filepath = vim.api.nvim_buf_get_name(0)
     vim.fn.system('npx prettier --write ' .. filepath)
-    vim.cmd("e!")
+    vim.cmd("silent! !e")
   elseif filetype == "python" then
     print("formatting python...")
     local filepath = vim.api.nvim_buf_get_name(0)
@@ -22,6 +22,11 @@ function Format_file()
     vim.fn.system('black ' .. filepath)
     vim.cmd("silent! !e")
     vim.fn.system("deactivate")
+  elseif filetype == "lua" then
+    print("formatting lua...")
+    local filepath = vim.api.nvim_buf_get_name(0)
+    vim.fn.system('npx stylua ' .. filepath)
+    vim.cmd("silent! !e")
   else
     print("No formatter configured for this filetype: " .. filetype)
   end
