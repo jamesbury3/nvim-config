@@ -35,6 +35,11 @@ function Format_file()
     local filepath = vim.api.nvim_buf_get_name(0)
     vim.fn.system("npx stylua " .. filepath)
     vim.cmd("silent! !e")
+  elseif filetype == "go" then
+    print("formatting go...")
+    local filepath = vim.api.nvim_buf_get_name(0)
+    vim.fn.system("gofmt -w " .. filepath)
+    vim.cmd("silent! !e")
   else
     print("No formatter configured for this filetype: " .. filetype)
   end
