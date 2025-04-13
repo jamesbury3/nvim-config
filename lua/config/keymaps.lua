@@ -4,7 +4,6 @@
 
 local map = LazyVim.safe_keymap_set
 
-map("n", "<leader>jq", ":%!jq --indent 4 '.'<CR>", { desc = "format json with jq" })
 map(
   "n",
   "<leader>cf",
