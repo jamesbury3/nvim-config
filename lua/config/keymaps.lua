@@ -21,9 +21,8 @@ local function format_with_prettier()
   reload_file()
 end
 
--- Define the function
 function Format_file()
-  local filetype = vim.bo.filetype -- Get the current filetype
+  local filetype = vim.bo.filetype
   if filetype == "yaml" then
     print("formatting yaml...")
     format_with_prettier()
