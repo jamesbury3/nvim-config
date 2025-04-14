@@ -33,7 +33,7 @@ function Format_file()
   elseif filetype == "python" then
     print("formatting python...")
     local filepath = vim.api.nvim_buf_get_name(0)
-    vim.fn.system("source ~/.config/nvim/formatters/venv/bin/activate")
+    vim.fn.system("source ~/.config/nvim/formatters/python/venv/bin/activate")
     vim.fn.system("black " .. filepath)
     vim.fn.system("deactivate")
     reload_file()
