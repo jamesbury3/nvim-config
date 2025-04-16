@@ -13,6 +13,8 @@
 
 ### Prettier (JS, Yaml, JSON, etc.)
 1. Install `prettier` globally using `npm`
+2. Install `prettier-plugin-java` using `npm`
+3. Paste [.prettierrc](./formatters/.prettierrc) into `~/.prettierrc`
 
 ### Go
 1. Install `Go`. This will include `gofmt` automatically
