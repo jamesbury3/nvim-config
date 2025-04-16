@@ -29,6 +29,9 @@ function Format_file()
   elseif filetype == "json" then
     print("formatting json...")
     format_with_prettier()
+  elseif filetype == "java" then
+    print("formatting java...")
+    format_with_prettier()
   elseif filetype == "python" then
     print("formatting python...")
     local filepath = vim.api.nvim_buf_get_name(0)
