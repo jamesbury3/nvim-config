@@ -11,8 +11,8 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- Fugitive
-vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+-- LazyGit
+vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
 
 -- Move highlighted line up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
