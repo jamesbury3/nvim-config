@@ -27,7 +27,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-
--- Allows LSP to show information
-vim.diagnostic.config({ virtual_text = true })
-vim.lsp.enable({ 'pyright', 'lua_ls' })
