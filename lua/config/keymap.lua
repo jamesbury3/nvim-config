@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope 
 -- Tab and buffer management
 vim.keymap.set("n", "L", vim.cmd.BufferLineCycleNext, { desc = "Switch to next buffer" })
 vim.keymap.set("n", "H", vim.cmd.BufferLineCyclePrev, { desc = "Switch to previous buffer" })
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>d", ":bd<CR>", { desc = "Delete current buffer" })
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
