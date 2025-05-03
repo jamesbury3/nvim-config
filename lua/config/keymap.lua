@@ -26,6 +26,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 
 -- General
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit all" })
+vim.keymap.set("n", "<leader>b", "``", { desc = "Return to previous location" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
