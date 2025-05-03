@@ -27,3 +27,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+-- required for bufferline
+vim.opt.termguicolors = true
+require("bufferline").setup({})
