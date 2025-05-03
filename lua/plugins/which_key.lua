@@ -1,3 +1,3 @@
 return {
-    { "folke/which-key.nvim", lazy = false }
+	{ "folke/which-key.nvim", lazy = false },
 }

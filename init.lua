@@ -4,5 +4,5 @@ require("config.settings")
 require("config.settings_lsp")
 require("modules.formatter")
 
-vim.cmd [[colorscheme moonfly]]
+vim.cmd([[colorscheme moonfly]])
 vim.cmd(":Alpha")
