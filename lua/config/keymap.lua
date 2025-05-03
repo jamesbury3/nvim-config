@@ -1,5 +1,5 @@
 -- Open explorer
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -7,23 +7,29 @@ vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope 
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>fk', ":Telescope keymaps<CR>", { desc = 'Telescope keymaps' })
 
 -- Undotree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "UndoTree" })
 
 -- LazyGit
-vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
+vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit, { desc = "LazyGit" })
 
--- Move highlighted line up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Move highlighted line
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
 
--- Keep clipboard when pasting over highlighted word
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- Clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy to clipboard" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 
--- Copy to system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- General
+vim.keymap.set('n', '<leader>qq', ':qa<CR>', { noremap = true, silent = true, desc = "Quit all" })
 
--- Which key
-vim.keymap.set("n", "<leader>w", vim.cmd.WhichKey)
+-- Window navigation
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = "Move to left window" })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = "Move to lower window" })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = "Move to upper window" })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = "Move to right window" })
+
