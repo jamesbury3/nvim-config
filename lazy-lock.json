@@ -1,5 +1,4 @@
 {
-  "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "blink.cmp": { "branch": "main", "commit": "4f38ce99a472932d5776337f08f7a8180f1f571a" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
