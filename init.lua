@@ -5,3 +5,4 @@ require("config.settings_lsp")
 require("modules.formatter")
 
 vim.cmd([[colorscheme moonfly]])
+require('dap-go').setup()

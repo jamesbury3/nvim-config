@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope 
 -- Tab and buffer management
 vim.keymap.set("n", "L", vim.cmd.BufferLineCycleNext, { desc = "Switch to next buffer" })
 vim.keymap.set("n", "H", vim.cmd.BufferLineCyclePrev, { desc = "Switch to previous buffer" })
-vim.keymap.set("n", "<leader>d", ":bd<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete current buffer" })
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
@@ -31,7 +31,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 
 -- General
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit all" })
-vim.keymap.set("n", "<leader>b", "``", { desc = "Return to previous location" })
+vim.keymap.set("n", "<leader>r", "``", { desc = "Return to previous location" })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save buffer" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -39,9 +40,17 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
--- vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = "format file" })
-
+-- Format file
 local formatter = require("modules.formatter")
 vim.keymap.set("n", "<leader>cf", function()
 	formatter.format_file()
 end, { desc = "format file with custom formatter", noremap = true, silent = true })
+
+-- Debugging
+vim.keymap.set("n", "<leader>db", vim.cmd.DapToggleBreakpoint, { desc = "DAP Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dc", vim.cmd.DapClearBreakpoints, { desc = "DAP Clear Breakpoint" })
+vim.keymap.set("n", "<leader>dd", vim.cmd.DapDisconnect, { desc = "DAP Disconnect" })
+vim.keymap.set("n", "<leader>ds", vim.cmd.DapContinue, { desc = "DAP Continue" })
+vim.keymap.set("n", "<F1>", vim.cmd.DapStepOver, { desc = "DAP Step Over" })
+vim.keymap.set("n", "<F2>", vim.cmd.DapStepInto, { desc = "DAP Step Into" })
+vim.keymap.set("n", "<F3>", vim.cmd.DapContinue, { desc = "DAP Continue" })
