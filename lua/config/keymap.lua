@@ -20,6 +20,13 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
 -- LazyGit
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit, { desc = "LazyGit" })
 
+-- Gitsigns
+local gs = package.loaded.gitsigns
+vim.keymap.set("n", "<leader>glp", gs.preview_hunk_inline, { desc = "Preview Changes" })
+vim.keymap.set("n", "<leader>glb", gs.blame_line, { desc = "Git blame line" })
+vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Git reset hunk" })
+vim.keymap.set("n", "<leader>gb", gs.blame, { desc = "Git blame" })
+
 -- Move highlighted line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
