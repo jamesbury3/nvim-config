@@ -39,7 +39,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 -- General
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit all" })
 vim.keymap.set("n", "<leader>r", "``", { desc = "Return to previous location" })
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save buffer" })
+vim.keymap.set("n", "<leader>w", ":w | NvimTreeRefresh<CR>", { desc = "Save buffer and refresh Nvim Tree" })
+vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
+vim.keymap.set("x", ">", ">gv", { desc = "Indent" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
