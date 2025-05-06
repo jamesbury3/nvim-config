@@ -32,7 +32,7 @@ function M.format_file()
 	elseif filetype == "lua" then
 		print("formatting lua...")
 		local filepath = vim.api.nvim_buf_get_name(0)
-		vim.fn.system("npx stylua " .. filepath)
+		vim.fn.system("stylua " .. filepath)
 		reload_file()
 	elseif filetype == "go" then
 		print("formatting go...")
