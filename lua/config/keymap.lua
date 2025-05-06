@@ -63,3 +63,34 @@ vim.keymap.set("n", "<leader>ds", vim.cmd.DapContinue, { desc = "DAP Continue" }
 vim.keymap.set("n", "<F1>", vim.cmd.DapStepOver, { desc = "DAP Step Over" })
 vim.keymap.set("n", "<F2>", vim.cmd.DapStepInto, { desc = "DAP Step Into" })
 vim.keymap.set("n", "<F3>", vim.cmd.DapContinue, { desc = "DAP Continue" })
+
+-- Language Commands
+vim.keymap.set("n", "<leader>lgt", function()
+	local abs_path = vim.api.nvim_buf_get_name(0)
+	local rel_path = vim.fn.fnamemodify(abs_path, ":.") -- path relative to CWD
+	local rel_dir = string.match(rel_path, "^(.*)/")
+	vim.cmd("split")
+	vim.cmd("terminal go test -v ./" .. rel_dir .. "/.")
+	vim.cmd("startinsert")
+	-- vim.fn.system("go test -v ./" .. rel_dir .. "/.")
+end, { desc = "Go Test Current Buffer" })
+
+-- Lsp
+local function organizeImports()
+  local params = vim.lsp.util.make_range_params()
+  params.context = { only = { "source.organizeImports" } }
+
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
+  for _, res in pairs(result or {}) do
+    for _, action in pairs(res.result or {}) do
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
+      else
+        vim.lsp.buf.execute_command(action.command)
+      end
+    end
+  end
+end
+
+vim.keymap.set("n", "gO", organizeImports, { desc = "Organize Imports" })
+
