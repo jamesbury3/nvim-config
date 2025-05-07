@@ -7,14 +7,19 @@
    2. `gcc` (may already be available depending on OS)
    3. `lazygit`
    4. `ripgrep`
-4. Clone this repository into `~/.config/nvim/`
+4. Clone this repository: `git clone https://github.com/jamesbury3/nvim-config ~/.config/nvim`
 5. Install `nvm`, `npm`, and `node`.
 6. Install `Go`
 
 ## Formatters
 ### Python
 1. Create a python virtual environment in `~/.config/nvim/formatters` using `requirements.txt`. This will be used for all formatters installed using `pip`.
-2. Within that virtual environment, install black with `pip install black`
+```
+cd ~/.config/nvim/formatters/python
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ### Prettier (JS, Yaml, JSON, etc.)
 1. Install `prettier` globally using `npm`
