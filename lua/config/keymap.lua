@@ -72,7 +72,6 @@ vim.keymap.set("n", "<leader>lgt", function()
 	vim.cmd("split")
 	vim.cmd("terminal go test -v ./" .. rel_dir .. "/.")
 	vim.cmd("startinsert")
-	-- vim.fn.system("go test -v ./" .. rel_dir .. "/.")
 end, { desc = "Go Test Current Buffer" })
 
 -- Lsp
