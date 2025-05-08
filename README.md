@@ -10,6 +10,11 @@
 4. Clone this repository: `git clone https://github.com/jamesbury3/nvim-config ~/.config/nvim`
 5. Install `nvm`, `npm`, and `node`.
 6. Install `Go`
+7. Add the following to ~/.zprofile:
+```
+# Neovim
+source ~/.config/nvim/.zprofile
+```
 
 ## Formatters
 ### Python
