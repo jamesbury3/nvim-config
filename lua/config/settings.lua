@@ -28,6 +28,10 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+-- ignore case when searching unless using a capital letter
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- required for bufferline
 vim.opt.termguicolors = true
 require("bufferline").setup({})
