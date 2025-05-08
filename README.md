@@ -3,14 +3,15 @@
 ## Getting Started
 1. Install Neovim
 2. Install the following prerequisites
-   1. `fzf`
-   2. `gcc` (may already be available depending on OS)
-   3. `lazygit`
-   4. `ripgrep`
+    1. `fzf`
+    2. `gcc` (may already be available depending on OS)
+    3. `go`
+    4. `lazygit`
+    5. `nvm`, `npm`, and `node`
+    6. `ripgrep`
+    7. `yarn`
 4. Clone this repository: `git clone https://github.com/jamesbury3/nvim-config ~/.config/nvim`
-5. Install `nvm`, `npm`, and `node`.
-6. Install `Go`
-7. Add the following to ~/.zprofile:
+5. Add the following to ~/.zprofile:
 ```
 # Neovim
 source ~/.config/nvim/.zprofile
