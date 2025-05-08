@@ -20,8 +20,6 @@ ns() {
     done
 
     FILE_NAME="$DIR/scratch_${INDEX}.${EXT}"
-
-    pbpaste > "$FILE_NAME"
     nvim "$FILE_NAME"
 }
 
