@@ -10,7 +10,10 @@
     5. `nvm`, `npm`, and `node`
     6. `ripgrep`
     7. `yarn`
-4. Clone this repository: `git clone https://github.com/jamesbury3/nvim-config ~/.config/nvim`
+4. Clone this repository:
+```
+git clone https://github.com/jamesbury3/nvim-config ~/.config/nvim`
+```
 5. Add the following to ~/.zprofile:
 ```
 # Neovim
