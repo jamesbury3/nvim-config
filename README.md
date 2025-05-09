@@ -43,6 +43,7 @@ pip install -r requirements.txt
    1. `gopls`
    2. `lua-language-server`
    3. `pyright`
+   4. `vscode-langservers-extracted` (json)
 
 ## Debugging
 
