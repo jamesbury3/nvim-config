@@ -7,3 +7,4 @@ foo.*
 *.log
 data
 formatters/python/venv
+node_modules/
