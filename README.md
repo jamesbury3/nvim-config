@@ -44,6 +44,7 @@ pip install -r requirements.txt
    2. `lua-language-server`
    3. `pyright`
    4. `vscode-langservers-extracted` (json)
+   5. `yaml-language-server`
 
 ## Debugging
 
