@@ -11,36 +11,42 @@ local function format_with_prettier()
 end
 
 function M.format_file()
+	local enabled_filetypes = { "go", "lua", "json", "java", "python", "yaml" }
 	local filetype = vim.bo.filetype
+	local current_filetype_enabled = false
+	for _, v in ipairs(enabled_filetypes) do
+		if v == filetype then
+			current_filetype_enabled = true
+		end
+	end
 
+	if not current_filetype_enabled then
+		return
+	end
+
+	print("formatting " .. filetype)
 	if filetype == "yaml" then
-		print("formatting yaml...")
 		format_with_prettier()
 	elseif filetype == "json" then
-		print("formatting json...")
 		format_with_prettier()
 	elseif filetype == "java" then
-		print("formatting java...")
 		format_with_prettier()
 	elseif filetype == "python" then
-		print("formatting python...")
 		local filepath = vim.api.nvim_buf_get_name(0)
-		vim.fn.system("source ~/.config/nvim/formatters/python/venv/bin/activate")
-		vim.fn.system("black " .. filepath)
-		vim.fn.system("deactivate")
+		vim.fn.system([[
+            source ~/.config/nvim/formatters/python/venv/bin/activate &&
+            black ]] .. filepath .. [[ &&
+            deactivate
+        ]])
 		reload_file()
 	elseif filetype == "lua" then
-		print("formatting lua...")
 		local filepath = vim.api.nvim_buf_get_name(0)
 		vim.fn.system("stylua " .. filepath)
 		reload_file()
 	elseif filetype == "go" then
-		print("formatting go...")
 		local filepath = vim.api.nvim_buf_get_name(0)
 		vim.fn.system("gofmt -w " .. filepath)
 		reload_file()
-	else
-		print("No formatter configured for this filetype: " .. filetype)
 	end
 end
 

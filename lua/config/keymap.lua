@@ -1,3 +1,5 @@
+local formatter = require("modules.formatter")
+
 -- Open explorer
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
 
@@ -39,7 +41,11 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 -- General
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit all" })
 vim.keymap.set("n", "<leader>r", "``", { desc = "Return to previous location" })
-vim.keymap.set("n", "<leader>w", ":w | NvimTreeRefresh<CR>", { desc = "Save buffer and refresh Nvim Tree" })
+vim.keymap.set("n", "<leader>w", function()
+	vim.cmd("w")
+	vim.cmd("NvimTreeRefresh")
+	formatter.format_file()
+end, { desc = "Save, refresh tree, format file" })
 vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent" })
 
@@ -50,7 +56,6 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 -- Format file
-local formatter = require("modules.formatter")
 vim.keymap.set("n", "<leader>cf", function()
 	formatter.format_file()
 end, { desc = "format file with custom formatter", noremap = true, silent = true })
@@ -64,8 +69,8 @@ vim.keymap.set("n", "<F1>", vim.cmd.DapStepOver, { desc = "DAP Step Over" })
 vim.keymap.set("n", "<F2>", vim.cmd.DapStepInto, { desc = "DAP Step Into" })
 vim.keymap.set("n", "<F3>", vim.cmd.DapContinue, { desc = "DAP Continue" })
 
--- Language Commands
-vim.keymap.set("n", "<leader>lgt", function()
+-- Specific Language Commands
+vim.keymap.set("n", "<leader>sgt", function()
 	local abs_path = vim.api.nvim_buf_get_name(0)
 	local rel_path = vim.fn.fnamemodify(abs_path, ":.") -- path relative to CWD
 	local rel_dir = string.match(rel_path, "^(.*)/")
@@ -76,20 +81,22 @@ end, { desc = "Go Test Current Buffer" })
 
 -- Lsp
 local function organizeImports()
-  local params = vim.lsp.util.make_range_params()
-  params.context = { only = { "source.organizeImports" } }
+	local params = vim.lsp.util.make_range_params()
+	params.context = { only = { "source.organizeImports" } }
 
-  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
-  for _, res in pairs(result or {}) do
-    for _, action in pairs(res.result or {}) do
-      if action.edit then
-        vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
-      else
-        vim.lsp.buf.execute_command(action.command)
-      end
-    end
-  end
+	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
+	for _, res in pairs(result or {}) do
+		for _, action in pairs(res.result or {}) do
+			if action.edit then
+				vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
+			else
+				vim.lsp.buf.execute_command(action.command)
+			end
+		end
+	end
 end
 
-vim.keymap.set("n", "gO", organizeImports, { desc = "Organize Imports" })
-
+vim.keymap.set("n", "<leader>lo", organizeImports, { desc = "LSP organize imports" })
+vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename" })
+vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "LSP implementation" })
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "LSP references" })
