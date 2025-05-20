@@ -48,6 +48,13 @@ vim.keymap.set("n", "<leader>w", function()
 end, { desc = "Save, refresh tree, format file" })
 vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent" })
+vim.keymap.set("n", "<leader>ctc", function()
+	if vim.b.completion == nil then
+		vim.b.completion = false
+	else
+		vim.b.completion = not vim.b.completion
+	end
+end, { desc = "Toggle Autocompletion" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
