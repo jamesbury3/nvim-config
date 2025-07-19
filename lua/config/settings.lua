@@ -35,3 +35,5 @@ vim.opt.smartcase = true
 -- required for bufferline
 vim.opt.termguicolors = true
 require("bufferline").setup({})
+
+vim.opt.conceallevel = 1
