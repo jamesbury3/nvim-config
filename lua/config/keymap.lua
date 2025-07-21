@@ -48,8 +48,12 @@ vim.keymap.set("n", "<leader>w", function()
 	vim.cmd("NvimTreeRefresh")
 	formatter.format_file()
 end, { desc = "Save, refresh tree, format file" })
+
+-- Indentation
 vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent" })
+
+-- Autocompletion
 vim.keymap.set("n", "<leader>ctc", function()
 	if vim.b.completion == nil then
 		vim.b.completion = false
