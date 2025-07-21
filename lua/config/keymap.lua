@@ -2,6 +2,7 @@ local formatter = require("modules.formatter")
 
 -- Open explorer
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
+vim.keymap.set("n", "<leader>E", ":NvimTreeFindFile<CR>", { desc = "Find File in Nvim Tree" })
 
 -- Telescope
 local builtin = require("telescope.builtin")
