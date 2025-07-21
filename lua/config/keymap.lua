@@ -1,5 +1,7 @@
 local formatter = require("modules.formatter")
 
+-- Close all buffers
+
 -- Open explorer
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
 vim.keymap.set("n", "<leader>E", ":NvimTreeFindFile<CR>", { desc = "Find File in Nvim Tree" })
@@ -15,8 +17,15 @@ vim.keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope 
 -- Tab and buffer management
 vim.keymap.set("n", "L", vim.cmd.BufferLineCycleNext, { desc = "Switch to next buffer" })
 vim.keymap.set("n", "H", vim.cmd.BufferLineCyclePrev, { desc = "Switch to previous buffer" })
-vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "Create new buffer" })
+vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>bD", function()
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(bufnr) and vim.api.nvim_buf_get_option(bufnr, "buftype") == "" then
+			vim.api.nvim_buf_delete(bufnr, {})
+		end
+	end
+end, { desc = "Close all buffers" })
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
