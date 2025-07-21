@@ -1,4 +1,4 @@
--- CheckMyDependencies.lua
+-- check_my_dependencies.lua
 -- Function to check required external dependencies for Neovim config
 
 local M = {}
