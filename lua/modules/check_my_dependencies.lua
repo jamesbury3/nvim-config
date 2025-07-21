@@ -4,20 +4,17 @@
 local M = {}
 
 local categorized_dependencies = {
-	language = {
-		{ name = "go", cmd = "go" },
-		{ name = "stylua", cmd = "stylua" },
+	debugger = {
+		{ name = "go dlv", cmd = "dlv" },
+	},
+	formatter = {
 		{ name = "black (venv)", custom = true },
 		{ name = "prettier", cmd = "prettier" },
 		{ name = "prettier-plugin-java", cmd = "prettier-plugin-java" },
-		{ name = "pip", cmd = "pip" },
-		{ name = "yarn", cmd = "yarn" },
-		{ name = "npm", cmd = "npm" },
+		{ name = "stylua", cmd = "stylua" },
 	},
-	utility = {
-		{ name = "fzf", cmd = "fzf" },
-		{ name = "lazygit", cmd = "lazygit" },
-		{ name = "ripgrep", cmd = "rg" },
+	language = {
+		{ name = "go", cmd = "go" },
 	},
 	lsp = {
 		{ name = "gopls", cmd = "gopls" },
@@ -25,8 +22,13 @@ local categorized_dependencies = {
 		{ name = "pyright", cmd = "pyright" },
 		{ name = "yamlls", cmd = "yaml-language-server" },
 	},
-	debugger = {
-		{ name = "go dlv", cmd = "dlv" },
+	utility = {
+		{ name = "fzf", cmd = "fzf" },
+		{ name = "lazygit", cmd = "lazygit" },
+		{ name = "ripgrep", cmd = "rg" },
+		{ name = "npm", cmd = "npm" },
+		{ name = "pip", cmd = "pip" },
+		{ name = "yarn", cmd = "yarn" },
 	},
 }
 
@@ -47,7 +49,13 @@ end
 
 function M.CheckMyDependencies()
 	local results = {}
-	for category, deps in pairs(categorized_dependencies) do
+	local categories = {}
+	for category, _ in pairs(categorized_dependencies) do
+		table.insert(categories, category)
+	end
+	table.sort(categories)
+	for _, category in ipairs(categories) do
+		local deps = categorized_dependencies[category]
 		table.insert(results, string.format("%s:", category:sub(1, 1):upper() .. category:sub(2)))
 		for _, dep in ipairs(deps) do
 			local status
