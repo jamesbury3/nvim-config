@@ -55,6 +55,13 @@ vim.keymap.set("n", "<leader>w", function()
 	vim.cmd("NvimTreeRefresh")
 	formatter.format_file()
 end, { desc = "Save, refresh tree, format file" })
+vim.keymap.set("n", "<leader>W", function()
+	if vim.o.wrap == nil then
+		vim.o.wrap = true
+	else
+		vim.o.wrap = not vim.o.wrap
+	end
+end, { desc = "Toggle Wrap" })
 
 -- Indentation
 vim.keymap.set("x", "<", "<gv", { desc = "Unindent" })
