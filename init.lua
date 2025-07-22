@@ -5,6 +5,7 @@ require("config.settings_lsp")
 require("config.settings_lualine")
 require("modules.formatter")
 require("modules.check_my_dependencies")
+require("modules.diff_two_windows")
 
 vim.cmd([[colorscheme moonfly]])
 require("dap-go").setup()
