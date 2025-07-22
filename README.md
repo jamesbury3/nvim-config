@@ -2,7 +2,8 @@
 
 ## Getting Started
 1. Install Neovim
-2. Install the following prerequisites
+2. Check which prerequisites are missing using `:CheckMyDependencies`
+3. Install the following prerequisites
     1. `fzf`
     2. `gcc` (may already be available depending on OS)
     3. `go`
