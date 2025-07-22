@@ -25,8 +25,9 @@ vim.keymap.set("n", "<leader>bD", function()
 	end
 end, { desc = "Close all buffers" })
 
--- Undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
+-- Utilities
+vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
+vim.keymap.set("n", "<leader>ud", vim.cmd.OpenDiffSplit, { desc = "Open Diff Split View" })
 
 -- LazyGit
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit, { desc = "LazyGit" })
