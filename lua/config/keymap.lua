@@ -27,7 +27,12 @@ end, { desc = "Close all buffers" })
 
 -- Utilities
 vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
-vim.keymap.set("n", "<leader>ud", vim.cmd.OpenDiffSplit, { desc = "Open Diff Split View" })
+vim.keymap.set("n", "<leader>ud", function()
+	vim.ui.input({ prompt = "Filetype for diff split (leave blank for none): " }, function(input)
+		if input == nil then return end
+		vim.cmd("OpenDiffSplit " .. input)
+	end)
+end, { desc = "Open Diff Split View (prompt for filetype)" })
 
 -- LazyGit
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit, { desc = "LazyGit" })
