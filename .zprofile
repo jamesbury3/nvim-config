@@ -2,6 +2,7 @@ alias n="nvim"
 alias nh="nvim ."
 alias nc="cd ~/.config/nvim/; nvim ."
 
+# creates a new file in ~/scratches of the specified file type
 ns() {
     if [ "$#" -ne 1 ]; then
         printf "Error: must provide exactly one argument.\nUsage: ns <filetype>\n"
