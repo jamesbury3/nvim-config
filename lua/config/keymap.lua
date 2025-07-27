@@ -29,7 +29,9 @@ end, { desc = "Close all buffers" })
 vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "UndoTree" })
 vim.keymap.set("n", "<leader>ud", function()
 	vim.ui.input({ prompt = "Filetype for diff split (leave blank for none): " }, function(input)
-		if input == nil then return end
+		if input == nil then
+			return
+		end
 		vim.cmd("OpenDiffSplit " .. input)
 	end)
 end, { desc = "Open Diff Split View (prompt for filetype)" })
@@ -43,6 +45,9 @@ vim.keymap.set("n", "<leader>glp", gs.preview_hunk_inline, { desc = "Preview Cha
 vim.keymap.set("n", "<leader>glb", gs.blame_line, { desc = "Git blame line" })
 vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Git reset hunk" })
 vim.keymap.set("n", "<leader>gb", gs.blame, { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gd", function()
+	vim.cmd("Gitsigns diffthis ")
+end, { desc = "Git diff current file" })
 
 -- Move highlighted line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
@@ -56,7 +61,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep register" })
 -- General
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit all" })
 vim.keymap.set("n", "<leader>r", "``", { desc = "Return to previous location" })
-vim.keymap.set("n", "<leader>w", function()
+vim.keymap.set("n", "<leader>s", function()
 	vim.cmd("w")
 	vim.cmd("NvimTreeRefresh")
 	formatter.format_file()
@@ -94,16 +99,16 @@ vim.keymap.set("n", "<leader>cf", function()
 end, { desc = "format file with custom formatter", noremap = true, silent = true })
 
 -- Debugging
-vim.keymap.set("n", "<leader>db", vim.cmd.DapToggleBreakpoint, { desc = "DAP Toggle Breakpoint" })
-vim.keymap.set("n", "<leader>dc", vim.cmd.DapClearBreakpoints, { desc = "DAP Clear Breakpoint" })
-vim.keymap.set("n", "<leader>dd", vim.cmd.DapDisconnect, { desc = "DAP Disconnect" })
-vim.keymap.set("n", "<leader>ds", vim.cmd.DapContinue, { desc = "DAP Continue" })
+vim.keymap.set("n", "<leader>Db", vim.cmd.DapToggleBreakpoint, { desc = "DAP Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>Dc", vim.cmd.DapClearBreakpoints, { desc = "DAP Clear Breakpoint" })
+vim.keymap.set("n", "<leader>Dd", vim.cmd.DapDisconnect, { desc = "DAP Disconnect" })
+vim.keymap.set("n", "<leader>Ds", vim.cmd.DapContinue, { desc = "DAP Continue" })
 vim.keymap.set("n", "<F1>", vim.cmd.DapStepOver, { desc = "DAP Step Over" })
 vim.keymap.set("n", "<F2>", vim.cmd.DapStepInto, { desc = "DAP Step Into" })
 vim.keymap.set("n", "<F3>", vim.cmd.DapContinue, { desc = "DAP Continue" })
 
 -- Specific Language Commands
-vim.keymap.set("n", "<leader>sgt", function()
+vim.keymap.set("n", "<leader>lgt", function()
 	local abs_path = vim.api.nvim_buf_get_name(0)
 	local rel_path = vim.fn.fnamemodify(abs_path, ":.") -- path relative to CWD
 	local rel_dir = string.match(rel_path, "^(.*)/")
