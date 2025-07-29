@@ -12,6 +12,8 @@ local categorized_dependencies = {
 		{ name = "prettier", cmd = "prettier" },
 		{ name = "prettier-plugin-java", cmd = "prettier-plugin-java" },
 		{ name = "stylua", cmd = "stylua" },
+		{ name = "rubocop", cmd = "rubocop" },
+		{ name = "erb-format", cmd = "erb-format" },
 	},
 	language = {
 		{ name = "go", cmd = "go" },
