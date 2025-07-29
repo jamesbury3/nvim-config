@@ -43,11 +43,24 @@ vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit, { desc = "LazyGit" })
 local gs = package.loaded.gitsigns
 vim.keymap.set("n", "<leader>glp", gs.preview_hunk_inline, { desc = "Preview Changes" })
 vim.keymap.set("n", "<leader>glb", gs.blame_line, { desc = "Git blame line" })
-vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "Git reset hunk" })
-vim.keymap.set("n", "<leader>gb", gs.blame, { desc = "Git blame" })
-vim.keymap.set("n", "<leader>gd", function()
+vim.keymap.set("n", "<leader>gfr", gs.reset_hunk, { desc = "Git reset hunk" })
+vim.keymap.set("n", "<leader>gfb", gs.blame, { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gfd", function()
 	vim.cmd("Gitsigns diffthis ")
 end, { desc = "Git diff current file" })
+
+-- DiffView toggle
+vim.keymap.set("n", "<leader>gd", function()
+	local lib = require("diffview.lib")
+	local view = lib.get_current_view()
+	if view then
+		-- DiffView is open, close it
+		vim.cmd("DiffviewClose")
+	else
+		-- DiffView is closed, open it
+		vim.cmd("DiffviewOpen")
+	end
+end, { desc = "Toggle DiffView" })
 
 -- Move highlighted line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
