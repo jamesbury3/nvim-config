@@ -11,6 +11,7 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
+					no_ignore = true,
 					-- Custom mapping to close nvim-tree after opening a file from Telescope
 					attach_mappings = function(prompt_bufnr, map)
 						local actions = require("telescope.actions")
