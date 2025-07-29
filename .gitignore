@@ -8,3 +8,4 @@ foo.*
 data
 formatters/python/venv
 node_modules/
+CLAUDE.md
