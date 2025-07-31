@@ -15,6 +15,8 @@ return {
 
 			api.config.mappings.default_on_attach(bufnr)
 
+			vim.keymap.del("n", "L", { buffer = bufnr })
+
 			vim.keymap.set("n", "<CR>", function()
 				local node = api.tree.get_node_under_cursor()
 				if node and not node.nodes then -- if it's not a directory

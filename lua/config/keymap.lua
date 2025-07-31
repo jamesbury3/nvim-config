@@ -6,12 +6,12 @@ vim.keymap.set("n", "<leader>E", ":NvimTreeFindFile<CR>", { desc = "Find File in
 
 -- Telescope
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader><leader>", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fi", builtin.find_files, { desc = "Telescope find all files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope keymaps" })
-vim.keymap.set("n", "<leader>fi", function()
+vim.keymap.set("n", "<leader><leader>", function()
 	builtin.find_files({ no_ignore = false })
 end, { desc = "Telescope find files (respect .gitignore)" })
 
@@ -108,6 +108,12 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
+-- Window resizing
+vim.keymap.set("n", "<leader>ww", "<C-w>5>", { desc = "Make window wider" })
+vim.keymap.set("n", "<leader>wn", "<C-w>5<", { desc = "Make window narrower" })
+vim.keymap.set("n", "<leader>wt", "<C-w>5+", { desc = "Make window taller" })
+vim.keymap.set("n", "<leader>ws", "<C-w>5-", { desc = "Make window shorter" })
 
 -- Format file
 vim.keymap.set("n", "<leader>cf", function()

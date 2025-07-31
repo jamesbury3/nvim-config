@@ -23,6 +23,7 @@ local categorized_dependencies = {
 		{ name = "jsonls", cmd = "vscode-json-language-server" },
 		{ name = "pyright", cmd = "pyright" },
 		{ name = "yamlls", cmd = "yaml-language-server" },
+		{ name = "ruby-lsp", cmd = "ruby-lsp" },
 	},
 	utility = {
 		{ name = "fzf", cmd = "fzf" },
