@@ -7,6 +7,17 @@ return {
 				file_ignore_patterns = {
 					"^.git/",
 				},
+				path_display = function(opts, path)
+					local Path = require("plenary.path")
+					local tail = Path:new(path):make_relative(vim.loop.cwd())
+					local max_len = 45 -- adjust to how much space you want
+					if #tail > max_len then
+						return "…" .. tail:sub(-max_len + 1)
+					else
+						return tail
+					end
+				end,
+				fname_width = 60, -- Ensure filenames are visible even for long paths
 			},
 			pickers = {
 				find_files = {
