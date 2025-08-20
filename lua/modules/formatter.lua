@@ -6,7 +6,7 @@ end
 
 local function format_with_prettier()
 	local filepath = vim.api.nvim_buf_get_name(0)
-	vim.fn.system("npx prettier --write " .. filepath)
+	vim.fn.system("prettier --write " .. filepath)
 	reload_file()
 end
 
