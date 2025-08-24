@@ -27,11 +27,23 @@ function M.format_file()
 	end
 
 	print("formatting " .. filetype)
+
+	-- Format with deno if in a deno project
+	local cwd = vim.fn.getcwd()
+	local config_file = cwd .. "/deno.json"
+	if vim.fn.filereadable(config_file) == 1 then
+		vim.fn.system("deno fmt " .. filepath)
+		reload_file()
+		return
+	end
+
 	if filetype == "yaml" then
 		format_with_prettier()
 	elseif filetype == "json" then
 		format_with_prettier()
 	elseif filetype == "java" then
+		format_with_prettier()
+	elseif filetype == "javascript" then
 		format_with_prettier()
 	elseif filetype == "typescript" then
 		format_with_prettier()
