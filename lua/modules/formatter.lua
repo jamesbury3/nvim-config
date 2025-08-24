@@ -11,7 +11,7 @@ local function format_with_prettier()
 end
 
 function M.format_file()
-	local enabled_filetypes = { "go", "lua", "json", "java", "python", "yaml", "rb", "ruby", "eruby" }
+	local enabled_filetypes = { "go", "lua", "json", "java", "python", "yaml", "rb", "ruby", "eruby", "typescript" }
 	local filetype = vim.bo.filetype
 	local current_filetype_enabled = false
 	local filepath = vim.api.nvim_buf_get_name(0)
@@ -32,6 +32,8 @@ function M.format_file()
 	elseif filetype == "json" then
 		format_with_prettier()
 	elseif filetype == "java" then
+		format_with_prettier()
+	elseif filetype == "typescript" then
 		format_with_prettier()
 	elseif filetype == "python" then
 		vim.fn.system([[
