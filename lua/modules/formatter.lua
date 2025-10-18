@@ -31,7 +31,12 @@ function M.format_file()
 	-- Format with deno if in a deno project
 	local cwd = vim.fn.getcwd()
 	local config_file = cwd .. "/deno.json"
-	if vim.fn.filereadable(config_file) == 1 then
+	if
+		vim.fn.filereadable(config_file) == 1 and filetype == "javascript"
+		or filetype == "typescript"
+		or filetype == "json"
+		or filetype == "jsonc"
+	then
 		vim.fn.system("deno fmt " .. filepath)
 		reload_file()
 		return
