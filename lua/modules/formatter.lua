@@ -11,7 +11,8 @@ local function format_with_prettier()
 end
 
 function M.format_file()
-	local enabled_filetypes = { "go", "lua", "json", "java", "python", "yaml", "rb", "ruby", "eruby", "typescript" }
+	local enabled_filetypes =
+		{ "go", "lua", "json", "java", "python", "yaml", "rb", "ruby", "eruby", "typescript", "rust" }
 	local filetype = vim.bo.filetype
 	local current_filetype_enabled = false
 	local filepath = vim.api.nvim_buf_get_name(0)
@@ -72,6 +73,10 @@ function M.format_file()
 	elseif filetype == "eruby" then
 		print("formatting erb file")
 		vim.fn.system("erb-format " .. vim.fn.shellescape(filepath) .. " --write")
+		reload_file()
+	elseif filetype == "rust" then
+		print("formatting erb file")
+		vim.fn.system("rustfmt " .. filepath)
 		reload_file()
 	end
 end

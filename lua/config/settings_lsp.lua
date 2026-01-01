@@ -9,4 +9,15 @@ vim.lsp.config("lua_ls", {
 	},
 })
 vim.diagnostic.config({ virtual_text = true })
-vim.lsp.enable({ "pyright", "lua_ls", "gopls", "jsonls", "yamlls", "ruby_lsp", "denols" })
+vim.lsp.enable({
+	"pyright",
+	"lua_ls",
+	"gopls",
+	"jsonls",
+	"yamlls",
+	"ruby_lsp",
+	"denols",
+	"rust_analyzer",
+	"fish_lsp",
+	"bashls",
+})
