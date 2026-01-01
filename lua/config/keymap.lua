@@ -160,4 +160,5 @@ vim.keymap.set("n", "<leader>lo", organizeImports, { desc = "LSP organize import
 vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename" })
 vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "LSP implementation" })
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "LSP references" })
+vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "LSP definition" })
 vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "Toggle floating diagnostic" })
