@@ -75,7 +75,7 @@ function M.format_file()
 		vim.fn.system("erb-format " .. vim.fn.shellescape(filepath) .. " --write")
 		reload_file()
 	elseif filetype == "rust" then
-		print("formatting erb file")
+		print("formatting rust file")
 		vim.fn.system("rustfmt " .. filepath)
 		reload_file()
 	end
