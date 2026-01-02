@@ -1,12 +1,4 @@
-tt.*
-.tests
-doc/tags
-debug
-.repro
-foo.*
-*.log
-data
+.claude/
+CLAUDE.md
 formatters/python/venv
 node_modules/
-CLAUDE.md
-.claude/
