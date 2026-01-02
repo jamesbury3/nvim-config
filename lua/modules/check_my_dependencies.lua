@@ -14,9 +14,13 @@ local categorized_dependencies = {
 		{ name = "stylua", cmd = "stylua" },
 		{ name = "rubocop", cmd = "rubocop" },
 		{ name = "erb-format", cmd = "erb-format" },
+		{ name = "rustfmt", cmd = "rustfmt" },
+		{ name = "deno fmt", cmd = "deno" },
 	},
 	language = {
 		{ name = "go", cmd = "go" },
+		{ name = "rust", cmd = "rustc" },
+		{ name = "deno", cmd = "deno" },
 	},
 	lsp = {
 		{ name = "gopls", cmd = "gopls" },
@@ -24,6 +28,11 @@ local categorized_dependencies = {
 		{ name = "pyright", cmd = "pyright" },
 		{ name = "yamlls", cmd = "yaml-language-server" },
 		{ name = "ruby-lsp", cmd = "ruby-lsp" },
+		{ name = "lua_ls", cmd = "lua-language-server" },
+		{ name = "denols", cmd = "deno" },
+		{ name = "rust_analyzer", cmd = "rust-analyzer" },
+		{ name = "fish_lsp", cmd = "fish-lsp" },
+		{ name = "bashls", cmd = "bash-language-server" },
 	},
 	utility = {
 		{ name = "fzf", cmd = "fzf" },
