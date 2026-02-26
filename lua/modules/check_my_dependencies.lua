@@ -33,6 +33,7 @@ local categorized_dependencies = {
 		{ name = "rust_analyzer", cmd = "rust-analyzer" },
 		{ name = "fish_lsp", cmd = "fish-lsp" },
 		{ name = "bashls", cmd = "bash-language-server" },
+		{ name = "nixd", cmd = "nixd" },
 	},
 	utility = {
 		{ name = "fzf", cmd = "fzf" },
