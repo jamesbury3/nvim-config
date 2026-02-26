@@ -33,10 +33,8 @@ function M.format_file()
 	local cwd = vim.fn.getcwd()
 	local config_file = cwd .. "/deno.json"
 	if
-		vim.fn.filereadable(config_file) == 1 and filetype == "javascript"
-		or filetype == "typescript"
-		or filetype == "json"
-		or filetype == "jsonc"
+		vim.fn.filereadable(config_file) == 1
+		and (filetype == "javascript" or filetype == "typescript" or filetype == "json" or filetype == "jsonc")
 	then
 		vim.fn.system("deno fmt " .. filepath)
 		reload_file()
