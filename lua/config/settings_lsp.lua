@@ -20,5 +20,6 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"fish_lsp",
 	"bashls",
-    "nixd"
+	"nixd",
+	"jdtls",
 })
