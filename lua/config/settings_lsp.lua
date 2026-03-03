@@ -21,5 +21,4 @@ vim.lsp.enable({
 	"fish_lsp",
 	"bashls",
 	"nixd",
-	"jdtls",
 })
